@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: 'Red Hat Display', sans-serif;
+}
+
+body {
+  background-color: #02020a;
+  opacity: 0.9;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #02020a 6px
+    ),
+    repeating-linear-gradient(#07756755, #077567);
+}
+
+img {
+  width: 100%;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  padding: 1.2rem;
+  background-color: white;
+}
+
+.cards_list {
+  z-index: 5;
+  padding: 2rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  justify-content: center;
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  transform: translateY(-10px);
+}
+
+.card_title {
+  margin: 0.4em auto;
+  /* font-size: 1.2rem; */
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+}
+
+footer {
+  background-color: white;
+  padding: 1em;
+  font-size: 1.2rem;
+}
