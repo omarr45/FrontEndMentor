@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- displays site properly based on user's device -->
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link
       rel="icon"
       type="image/png"
@@ -42,12 +48,13 @@
         background-position: 0 -250px;
         background-size: 120%;
         font-family: 'Red Hat Display', sans-serif;
+        padding: 10px;
       }
 
       .card {
         margin: 0 auto;
         background-color: white;
-        max-width: 350px;
+        max-width: 340px;
         border-radius: 20px;
         overflow: hidden;
       }
@@ -114,6 +121,30 @@
         transition: transform 0.5s ease-in-out;
       }
 
+      .top,
+      .top a {
+        text-decoration: none;
+        width: 100%;
+        max-width: 350px;
+        color: hsl(245, 75%, 52%);
+        font-weight: 900;
+        font-size: 1rem;
+        font-family: inherit;
+        padding: 1em;
+        border-radius: 12px;
+        border: 2px solid transparent;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        background-color: transparent;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .top:hover {
+        transform: none;
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid hsl(245, 75%, 52%);
+      }
+
       .cancel {
         cursor: pointer;
         font-weight: 900;
@@ -123,6 +154,9 @@
 
       @media screen and (min-width: 768px) {
         .card {
+          max-width: 450px;
+        }
+        .top {
           max-width: 450px;
         }
         .card_content {
@@ -143,6 +177,14 @@
     </style>
   </head>
   <body>
+    <div class="top">
+      <a
+        href="https://www.frontendmentor.io/challenges/order-summary-component-QlPmajDUj"
+        target="_blank"
+      >
+        Challenge Link &nbsp; <i class="fas fa-external-link-alt"></i>
+      </a>
+    </div>
     <div class="card">
       <img src="./images/illustration-hero.svg" alt="hero" />
       <div class="card_content">
