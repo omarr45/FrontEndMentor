@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Tip calculator</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type='number'] {
+        -moz-appearance: textfield;
+      }
+
+      body {
+        font-family: 'Space Mono', monospace;
+        background-color: #c5e4e7;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .top,
+      .top a {
+        text-align: center;
+        text-decoration: none;
+        width: 100%;
+        max-width: 350px;
+        color: #00474b;
+        font-weight: 900;
+        font-size: 1rem;
+        font-family: inherit;
+        padding: 1em;
+        border-radius: 12px;
+        border: 2px solid transparent;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        background-color: transparent;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .top:hover {
+        transform: none;
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid #00474b;
+      }
+
+      .card {
+        max-width: 740px;
+        margin: 0 auto;
+        padding: 1.6em;
+        background-color: white;
+        border-radius: 15px;
+        display: flex;
+        gap: 1em;
+        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+      }
+
+      .col {
+        flex-basis: 100%;
+        padding: 1em;
+        border-radius: 10px;
+      }
+
+      .col_1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1em;
+      }
+
+      .col_2 {
+        padding: 2em;
+        background-color: #00474b;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #576566df;
+      }
+
+      .input {
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        background-color: #f3f8fb;
+        padding: 0.3em 0.5rem;
+        font-family: inherit;
+        text-align: right;
+        margin-top: 0.6em;
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #00474b;
+        border: 2px solid transparent;
+      }
+
+      .input::placeholder {
+        opacity: 0.5;
+      }
+
+      .input:focus {
+        outline: none;
+        border: 2px solid #54a59b;
+      }
+
+      .spans {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0.6em;
+        margin-top: 0.6em;
+      }
+
+      .percentage {
+        height: 36px;
+        background-color: #00474b;
+        text-align: center;
+        color: white;
+        font-weight: 900;
+        border-radius: 5px;
+        width: 100%;
+        border: none;
+        color: white;
+        font-family: inherit;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      .custom {
+        background-color: #f3f8fb;
+        color: #597c7b;
+        cursor: text;
+      }
+
+      .custom::placeholder {
+        color: #597c7b;
+      }
+
+      .row_2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .row_2 + .row_2 {
+        margin-top: 2em;
+      }
+
+      .row_2 .text {
+        font-size: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+        color: white;
+      }
+
+      .row_2 .text span {
+        opacity: 0.5;
+        font-weight: normal;
+      }
+
+      .number {
+        font-size: 2.2rem;
+        color: #26c3ad;
+      }
+
+      .reset {
+        width: 100%;
+        padding: 0.6em;
+        border: none;
+        background-color: #26c2ad;
+        font-family: inherit;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #00474b;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .reset:disabled {
+        opacity: 0.3;
+        cursor: no-drop;
+      }
+      @media screen and (min-width: 768px) {
+        .top {
+          max-width: 450px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <a
+        href="https://www.frontendmentor.io/challenges/order-summary-component-QlPmajDUj"
+        target="_blank"
+      >
+        Challenge Link &nbsp; <i class="fas fa-external-link-alt"></i>
+      </a>
+    </div>
+    <div class="card">
+      <div class="col col_1">
+        <div class="row">
+          <label for="bill">Bill</label>
+          <input
+            class="input"
+            type="number"
+            name="bill"
+            id="bill"
+            placeholder="0"
+          />
+        </div>
+
+        <div class="row">
+          <label for="tip">Select Tip %</label>
+          <div class="spans">
+            <button class="percentage">5%</button>
+            <button class="percentage">10%</button>
+            <button class="percentage">15%</button>
+            <button class="percentage">25%</button>
+            <button class="percentage">50%</button>
+            <input
+              class="percentage custom"
+              type="number"
+              name="tip"
+              id="tip"
+              placeholder="Custom"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="people"> Number of People </label>
+          <input
+            class="input"
+            type="number"
+            name="people"
+            id="people"
+            placeholder="0"
+          />
+        </div>
+      </div>
+
+      <div class="col col_2">
+        <div class="wrapper">
+          <div class="row_2">
+            <div class="text">
+              Tip Amount
+              <span>/ person</span>
+            </div>
+            <h2 class="number">$0.00</h2>
+          </div>
+          <div class="row_2">
+            <div class="text">
+              Total
+              <span>/ person</span>
+            </div>
+            <h2 class="number">$0.00</h2>
+          </div>
+        </div>
+
+        <button class="reset" disabled>Reset</button>
+      </div>
+    </div>
+  </body>
+</html>
